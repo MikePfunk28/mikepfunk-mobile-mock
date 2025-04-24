@@ -1,3 +1,4 @@
+
 import * as THREE from "three";
 import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
@@ -33,7 +34,7 @@ interface FloatingObjectProps {
   rotation?: [number, number, number];
   scale?: number;
   color?: string;
-  geometry?: "box" | "sphere" | "torus";
+  geometry?: "box" | "sphere" | "torus" | "card";
   speed?: number;
   label?: string;
   url?: string;
@@ -42,7 +43,7 @@ interface FloatingObjectProps {
 const FloatingObject = ({
   position,
   rotation = [0, 0, 0],
-  scale = 1.5,
+  scale = 2,
   color = "#33C3F0",
   geometry = "box",
   speed = 1,
@@ -74,6 +75,9 @@ const FloatingObject = ({
     case "torus":
       geometryElement = <torusGeometry args={[0.5 * scale, 0.2 * scale, 32, 48]} />;
       break;
+    case "card":
+      geometryElement = <boxGeometry args={[1.5 * scale, 0.8 * scale, 0.1 * scale]} />;
+      break;
     default:
       geometryElement = <boxGeometry args={[0.6 * scale, 0.6 * scale, 0.6 * scale]} />;
   }
@@ -93,6 +97,8 @@ const FloatingObject = ({
           color={hovered ? "#8BE9FD" : color}
           metalness={0.7}
           roughness={0.2}
+          transparent={geometry === "card"}
+          opacity={geometry === "card" ? 0.7 : 1}
           emissive={hovered ? "#8BE9FD" : "#000000"}
           emissiveIntensity={hovered ? 0.8 : 0}
         />
@@ -198,9 +204,9 @@ export const BackgroundScene = () => {
       />
       <FloatingObject 
         position={[2.5, 2, -4]} 
-        geometry="sphere" 
+        geometry="card" 
         color="#5383B0" 
-        scale={1.2} 
+        scale={1} 
         speed={0.9}
         label="GitHub"
         url="https://github.com/MikePfunk28"
