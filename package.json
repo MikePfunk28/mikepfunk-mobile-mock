@@ -46,6 +46,8 @@
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@tanstack/react-query": "^5.56.2",
+    "bun": "^1.2.10",
+    "caniuse-lite": "^1.0.30001715",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
@@ -66,6 +68,7 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.155.0",
     "vaul": "^0.9.3",
+    "vite_react_shadcn_ts": "file:",
     "zod": "^3.23.8"
   },
   "devDependencies": {
