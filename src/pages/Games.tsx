@@ -5,8 +5,10 @@ import { Canvas3D } from "@/components/Canvas3D";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Smartphone, ExternalLink } from "lucide-react";
-import { Text, Box, MeshDistortMaterial } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import * as THREE from "three";
 
 const GamesPage = () => {
   const navigate = useNavigate();
@@ -67,6 +69,8 @@ const GamesPage = () => {
 };
 
 const GameScene = () => {
+  const meshRef = useRef<THREE.Mesh>(null);
+  
   return (
     <>
       <Text
@@ -79,15 +83,14 @@ const GameScene = () => {
         Games
       </Text>
       
-      <Box position={[0, -0.5, -2]} args={[1, 1, 1]}>
-        <MeshDistortMaterial 
-          color="#33C3F0" 
-          speed={2}
-          distort={0.5}
+      <mesh position={[0, -0.5, -2]} ref={meshRef}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial 
+          color="#33C3F0"
           metalness={0.8}
           roughness={0.2}
         />
-      </Box>
+      </mesh>
     </>
   );
 };
