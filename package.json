@@ -1,6 +1,7 @@
 {
   "name": "vite_react_shadcn_ts",
   "private": true,
+  "homepage": "https://mikepfunk28.github.io/mikepfunk-mobile-mock",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
