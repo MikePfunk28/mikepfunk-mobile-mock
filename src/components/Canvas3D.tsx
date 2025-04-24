@@ -1,4 +1,3 @@
-
 import * as THREE from "three";
 import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
@@ -43,9 +42,9 @@ interface FloatingObjectProps {
 const FloatingObject = ({
   position,
   rotation = [0, 0, 0],
-  scale = 2,
+  scale = 3,
   color = "#33C3F0",
-  geometry = "box",
+  geometry = "card",
   speed = 1,
   label,
   url
@@ -79,7 +78,7 @@ const FloatingObject = ({
       geometryElement = <boxGeometry args={[1.5 * scale, 0.8 * scale, 0.1 * scale]} />;
       break;
     default:
-      geometryElement = <boxGeometry args={[0.6 * scale, 0.6 * scale, 0.6 * scale]} />;
+      geometryElement = <boxGeometry args={[1.2 * scale, 0.8 * scale, 0.1 * scale]} />;
   }
 
   return (
@@ -97,18 +96,18 @@ const FloatingObject = ({
           color={hovered ? "#8BE9FD" : color}
           metalness={0.7}
           roughness={0.2}
-          transparent={geometry === "card"}
-          opacity={geometry === "card" ? 0.7 : 1}
+          transparent={true}
+          opacity={0.8}
           emissive={hovered ? "#8BE9FD" : "#000000"}
           emissiveIntensity={hovered ? 0.8 : 0}
         />
       </mesh>
       {label && (
         <Text
-          position={[position[0], position[1] - 1, position[2]]}
+          position={[position[0], position[1] - 1.2, position[2]]}
           color={hovered ? "#8BE9FD" : "#33C3F0"}
-          fontSize={0.3}
-          maxWidth={2}
+          fontSize={0.4}
+          maxWidth={3}
           textAlign="center"
           anchorX="center"
           anchorY="middle"
@@ -178,35 +177,33 @@ export const BackgroundScene = () => {
   return (
     <group>
       <FloatingObject 
-        position={[-3, 1.5, -4]} 
-        geometry="sphere" 
+        position={[-4, 2, -6]} 
+        geometry="card" 
         color="#33C3F0" 
         speed={0.8}
         label="Quantum Drift"
         url="https://mikepfunk.com/games/aws-cloud-mystery"
       />
       <FloatingObject 
-        position={[3, -1, -3]} 
-        geometry="torus" 
+        position={[4, -1.5, -6]} 
+        geometry="card" 
         color="#8BE9FD" 
-        scale={1.8} 
         speed={0.5}
         label="Advent of Code"
         url="https://github.com/MikePfunk28/advent_of_code"
       />
       <FloatingObject 
-        position={[-2.5, -1.5, -5]} 
-        geometry="box" 
+        position={[-3.5, -2, -7]} 
+        geometry="card" 
         color="#5383B0" 
         speed={0.6}
         label="LinkedIn"
         url="https://www.linkedin.com/in/michael.pfundt"
       />
       <FloatingObject 
-        position={[2.5, 2, -4]} 
+        position={[3.5, 2.5, -6]} 
         geometry="card" 
         color="#5383B0" 
-        scale={1} 
         speed={0.9}
         label="GitHub"
         url="https://github.com/MikePfunk28"
