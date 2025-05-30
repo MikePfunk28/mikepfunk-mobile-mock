@@ -16,6 +16,7 @@ export const Navigation = () => {
   const navigation: NavigationItem[] = [
     { name: "Home", href: "/", icon: <Home size={20} /> },
     { name: "About", href: "/about", icon: <User size={20} /> },
+    { name: "Databot", href: "/databot", icon: <User size={20} /> },
     { name: "Projects", href: "/projects", icon: <Folder size={20} /> },
     { name: "Blog", href: "/blog", icon: <Book size={20} /> },
     { name: "Games", href: "/games", icon: <Smartphone size={20} /> },

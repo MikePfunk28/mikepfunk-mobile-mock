@@ -25,24 +25,24 @@ const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-grow flex flex-col">
         <div className="relative flex-grow">
           <Canvas3D>
             <HomeScene navigate={navigate} />
           </Canvas3D>
-          
+
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className={`text-center transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-funk-white text-glow">
-                Mike Funk
+                MikePFunk
               </h1>
               <p className="text-xl mb-6 text-funk-grey">
-                Developer & Designer
+                Developer | Cloud Development
               </p>
               <div className="pointer-events-auto">
-                <Button 
-                  className="bg-funk-blue hover:bg-funk-blue/80 text-white" 
+                <Button
+                  className="bg-funk-blue hover:bg-funk-blue/80 text-white"
                   onClick={() => navigate('/projects')}
                 >
                   View Projects <ArrowRight className="ml-2" size={16} />
@@ -73,11 +73,11 @@ const HomeScene = ({ navigate }: { navigate: (path: string) => void }) => {
           Welcome
         </Text>
       </Float>
-      
+
       <mesh position={[0, 0, -2]} onClick={() => navigate('/projects')}>
         <sphereGeometry args={[0.7, 32, 32]} />
-        <meshStandardMaterial 
-          color="#33C3F0" 
+        <meshStandardMaterial
+          color="#33C3F0"
           metalness={0.5}
           roughness={0.2}
           emissive="#33C3F0"

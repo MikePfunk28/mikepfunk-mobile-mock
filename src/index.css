@@ -10,6 +10,8 @@
 
     --card: 222 47% 11%;
     --card-foreground: 0 0% 100%;
+    --card-shadow: 213 100% 20% 0.1;
+    --card-border: 215 16% 25%;
 
     --popover: 222 47% 11%;
     --popover-foreground: 0 0% 100%;
@@ -59,7 +61,7 @@
     @apply bg-funk-dark text-funk-white antialiased overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
-  
+
   canvas {
     @apply touch-none;
   }
@@ -69,16 +71,16 @@
   .glass-morph {
     @apply backdrop-blur-md bg-funk-dark/70 border border-funk-blue/20 shadow-lg;
   }
-  
+
   .text-glow {
     text-shadow: 0 0 15px rgba(51, 195, 240, 0.7);
   }
-  
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

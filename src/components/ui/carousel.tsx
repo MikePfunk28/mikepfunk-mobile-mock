@@ -3,6 +3,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { useMemo } from 'react';
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -120,18 +121,35 @@ const Carousel = React.forwardRef<
 
     return (
       <CarouselContext.Provider
-        value={{
-          carouselRef,
-          api: api,
-          opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-          scrollPrev,
-          scrollNext,
-          canScrollPrev,
-          canScrollNext,
-        }}
+        value={useMemo(
+          () => ({
+            carouselRef,
+            api: api,
+            opts,
+            orientation:
+              orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+            scrollPrev,
+            scrollNext,
+            canScrollPrev,
+            canScrollNext,
+          }),
+          [
+            carouselRef,
+            api,
+            opts,
+            orientation,
+            scrollPrev,
+            scrollNext,
+            canScrollPrev,
+            canScrollNext,
+          ]
+        )}
       >
+        <div
+          ref={ref}
+          onKeyDownCapture={handleKeyDown}
+
+      ></div>
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}

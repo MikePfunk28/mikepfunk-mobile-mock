@@ -3,17 +3,18 @@ import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Text, useTexture, Environment } from "@react-three/drei";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { TextureLoader } from "three";
 
 interface CameraControlsProps {
   enableRotate?: boolean;
 }
 
 const CameraControls = ({ enableRotate = true }: CameraControlsProps) => {
-  const controlsRef = useRef<any>(null);
+  const controlsRef = useRef<never>(null);
   const isMobile = useIsMobile();
-  
+
   return (
-    <OrbitControls 
+    <OrbitControls
       ref={controlsRef}
       enableZoom={true}
       enablePan={false}
@@ -37,7 +38,14 @@ interface FloatingObjectProps {
   speed?: number;
   label?: string;
   url?: string;
+  iconSrc?: string;
 }
+
+// load a texture, set wrap mode to repeat
+const texture = new THREE.TextureLoader().load( "textures/water.jpg" );
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set( 4, 4 );
 
 const FloatingObject = ({
   position,
@@ -47,18 +55,20 @@ const FloatingObject = ({
   geometry = "card",
   speed = 1,
   label,
-  url
+  url,
+  iconSrc
 }: FloatingObjectProps) => {
   const meshRef = useRef<THREE.Mesh>(null);
-  const [hovered, setHover] = useState(false);
-  
+  const [hovered, setHovered] = useState(false);
+
   useFrame((state) => {
     if (!meshRef.current) return;
-    
+
     const t = state.clock.getElapsedTime() * speed;
     meshRef.current.position.y = position[1] + Math.sin(t) * 0.1;
     meshRef.current.rotation.y += 0.01 * speed;
   });
+
 
   const handleClick = () => {
     if (url) {
@@ -87,8 +97,8 @@ const FloatingObject = ({
         ref={meshRef}
         position={position}
         rotation={rotation as [number, number, number]}
-        onPointerOver={() => setHover(true)}
-        onPointerOut={() => setHover(false)}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
         onClick={handleClick}
       >
         {geometryElement}
@@ -104,9 +114,9 @@ const FloatingObject = ({
       </mesh>
       {label && (
         <Text
-          position={[position[0], position[1] - 1.2, position[2]]}
+          position={[position[0], position[1] - 1.9, position[2]]}
           color={hovered ? "#8BE9FD" : "#33C3F0"}
-          fontSize={0.4}
+          fontSize={0.7}
           maxWidth={3}
           textAlign="center"
           anchorX="center"
@@ -115,22 +125,38 @@ const FloatingObject = ({
           {label}
         </Text>
       )}
+      {iconSrc && (
+        <texture
+          attach="map"
+          url={(iconSrc)}
+          onUpdate={(texture) => {
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.set(0.5, 0.5);
+          }}
+        />
+      )}
     </group>
   );
 };
 
-export const ProjectCard = ({ 
-  project, 
-  position, 
+interface Project {
+  name: string;
+  // Add other project properties as needed
+}
+
+export const ProjectCard = ({
+  project,
+  position,
   onClick
-}: { 
-  project: any, 
+}: {
+  project: Project,
   position: [number, number, number],
-  onClick: () => void 
+  onClick: () => void
 }) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHover] = useState(false);
-  
+
   useFrame(() => {
     if (!meshRef.current) return;
     meshRef.current.rotation.y += 0.005;
@@ -148,7 +174,7 @@ export const ProjectCard = ({
         onClick={onClick}
       >
         <boxGeometry args={[1.5, 0.8, 0.1]} />
-        <meshStandardMaterial 
+        <meshStandardMaterial
           color={hovered ? "#8BE9FD" : "#33C3F0"}
           metalness={0.5}
           roughness={0.3}
@@ -158,9 +184,9 @@ export const ProjectCard = ({
           emissiveIntensity={hovered ? 0.3 : 0}
         />
         <Text
-          position={[0, 0, 0.06]}
+          position={[0, 0, 0.6]}
           color="white"
-          fontSize={0.15}
+          fontSize={0.24}
           maxWidth={1.3}
           textAlign="center"
           anchorX="center"
@@ -176,37 +202,50 @@ export const ProjectCard = ({
 export const BackgroundScene = () => {
   return (
     <group>
-      <FloatingObject 
-        position={[-4, 2, -6]} 
-        geometry="card" 
-        color="#33C3F0" 
-        speed={0.8}
+      <FloatingObject
+        position={[-7, 4, -6]}
+        geometry="card"
+        color="#33C3F0"
+        speed={0.6}
         label="Quantum Drift"
         url="https://mikepfunk.com/games/aws-cloud-mystery"
+        iconSrc="/qd.png"
       />
-      <FloatingObject 
-        position={[4, -1.5, -6]} 
-        geometry="card" 
-        color="#8BE9FD" 
-        speed={0.5}
-        label="Advent of Code"
-        url="https://github.com/MikePfunk28/advent_of_code"
+      <FloatingObject
+        position={[7, -4, -6]}
+        geometry="card"
+        color="#8BE9FD"
+        speed={0.8}
+        label="Databot"
+        url="https://databot.mikepfunk.com"
+        iconSrc="/mikepfunk_transparent_177x182-2.png"
       />
-      <FloatingObject 
-        position={[-3.5, -2, -7]} 
-        geometry="card" 
-        color="#5383B0" 
-        speed={0.6}
+      <FloatingObject
+        position={[-7, -4, -6]}
+        geometry="card"
+        color="#5383B0"
+        speed={0.8}
         label="LinkedIn"
-        url="https://www.linkedin.com/in/michael.pfundt"
+        url="https://www.linkedin.com/in/michaelpfundt/"
+        iconSrc="/linkedin.gif"
       />
-      <FloatingObject 
-        position={[3.5, 2.5, -6]} 
-        geometry="card" 
-        color="#5383B0" 
-        speed={0.9}
+      <FloatingObject
+        position={[7, 4, -6]}
+        geometry="card"
+        color="#5383B0"
+        speed={0.6}
         label="GitHub"
         url="https://github.com/MikePfunk28"
+        iconSrc="/github.png"
+      />
+      <FloatingObject
+        position={[0, -4, -6]}
+        geometry="card"
+        color="#5383B0"
+        speed={0.8}
+        label="flashcards"
+        url="https://flashcards.mikepfunk.com"
+        iconSrc="/linkedin.gif"
       />
     </group>
   );
@@ -218,10 +257,10 @@ interface Canvas3DProps {
   enableControls?: boolean;
 }
 
-export const Canvas3D = ({ 
-  children, 
-  cameraPosition = [0, 0, 5], 
-  enableControls = true 
+export const Canvas3D = ({
+  children,
+  cameraPosition = [0, -3, 3],
+  enableControls = true
 }: Canvas3DProps) => {
   return (
     <div className="absolute inset-0 h-full w-full touch-none">
@@ -229,10 +268,10 @@ export const Canvas3D = ({
         camera={{ position: cameraPosition }}
         gl={{ antialias: true, alpha: true }}
       >
-        <fog attach="fog" args={["#1A1F2C", 5, 15]} />
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[5, 5, 5]} intensity={0.8} castShadow />
-        <spotLight position={[-5, 5, 5]} angle={0.15} penumbra={1} intensity={0.5} castShadow />
+        <fog attach="fog" args={["#A3FFE0", 5, 15]} />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={0.9} castShadow />
+        <spotLight position={[-5, 5, 5]} angle={0.15} penumbra={1} intensity={0.8} castShadow />
         <Suspense fallback={null}>
           <Environment preset="city" />
           {children}

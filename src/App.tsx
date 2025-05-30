@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
+import Databot from "./pages/Databot";
 import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
+          <Route path="/databot" element={<Databot />} />
           <Route path="/games" element={<Games />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
