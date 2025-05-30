@@ -45,7 +45,7 @@ export class GithubService {
 
       // Filter out forked repositories and transform to our Project interface
       return repos
-        .filter(repo => !repo.fork && !repo.name.includes('.github.io'))
+        .filter(repo => !repo.fork && !/\.github\.io$/.test(repo.name))
         .map(repo => ({
           id: repo.id,
           name: repo.name.replace(/-/g, " "),
