@@ -23,21 +23,21 @@ const MOCK_POSTS: BlogPost[] = [
     title: "Getting Started with AWS Cloud",
     excerpt: "A beginners guide to working with AWS cloud services and infrastructure.",
     date: "2023-11-15",
-    url: "https://mikepfunk.com/blog/aws-cloud"
+    url: "https://blog.mikepfunk.com/"
   },
   {
     id: "2",
     title: "Learning React in 2023",
     excerpt: "My journey with modern React development and best practices.",
     date: "2023-09-22",
-    url: "https://mikepfunk.com/blog/react-2023"
+    url: "https://blog.mikepfunk.com/"
   },
   {
     id: "3",
     title: "Building 3D Web Experiences",
     excerpt: "How to create interactive 3D content for the web using Three.js and React Three Fiber.",
     date: "2023-08-10",
-    url: "https://mikepfunk.com/blog/3d-web"
+    url: "https://blog.mikepfunk.com/"
   }
 ];
 
@@ -60,7 +60,7 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-grow">
         <div className="relative h-[30vh] mb-8">
           <Canvas3D>
@@ -77,10 +77,10 @@ const BlogPage = () => {
             </Float>
           </Canvas3D>
         </div>
-        
+
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold mb-8 text-funk-blue text-glow">Latest Posts</h1>
-          
+
           {loading ? (
             <div className="space-y-6">
               {[...Array(3)].map((_, i) => (
@@ -98,13 +98,13 @@ const BlogPage = () => {
                       <Calendar size={14} className="mr-1" />
                       {new Date(post.date).toLocaleDateString()}
                     </div>
-                    
+
                     <h2 className="text-xl font-bold mb-2 text-funk-white">{post.title}</h2>
                     <p className="text-funk-grey mb-4">{post.excerpt}</p>
-                    
-                    <Button 
-                      variant="link" 
-                      className="p-0 text-funk-blue" 
+
+                    <Button
+                      variant="link"
+                      className="p-0 text-funk-blue"
                       asChild
                     >
                       <a href={post.url} target="_blank" rel="noopener noreferrer">

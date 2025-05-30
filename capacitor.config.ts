@@ -1,12 +1,11 @@
-
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.6618707f48f84854bb2e335f02395d06',
+  appId: 'com.mikepfunk.portfolio',
   appName: 'funk-folio-3d-mobile',
   webDir: 'dist',
   server: {
-    url: "https://6618707f-48f8-4854-bb2e-335f02395d06.lovableproject.com?forceHideBadge=true",
+    url: "https://mikepfunk.github.io/mikepfunk-mobile-mock",
     cleartext: true
   },
   plugins: {

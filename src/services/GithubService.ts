@@ -28,7 +28,7 @@ export interface Project {
 }
 
 export class GithubService {
-  private static USERNAME = "mikepfunk"; // Replace with your GitHub username
+  private static USERNAME = "mikepfunk28"; // Replace with your GitHub username
   private static BASE_URL = "https://api.github.com";
 
   static async fetchProjects(): Promise<Project[]> {
@@ -42,7 +42,7 @@ export class GithubService {
       }
 
       const repos: GithubRepo[] = await response.json();
-      
+
       // Filter out forked repositories and transform to our Project interface
       return repos
         .filter(repo => !repo.fork && !repo.name.includes('.github.io'))
