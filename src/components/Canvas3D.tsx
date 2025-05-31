@@ -204,7 +204,7 @@ export const BackgroundScene = () => {
         color="#8BE9FD"
         speed={0.8}
         label="Databot"
-        url="https://databot.mikepfunk.com"
+        url="https://m.mikepfunk.com/databot"
         iconSrc="/mikepfunk_transparent_177x182-2.png"
       />
       <FloatingObject
