@@ -25,3 +25,13 @@ dist-ssr
 
 
 gptengineer.js
+.github/copilot-instructions.md
+
+.github/memory-bank/
+.github/cursor-agent.md
+.github/cursor-chat.md
+
+.github/HOWTO-workflows.md
+.github/HOWTO-memoryBank.md
+.github/storage.json
+.github/current-agent-request.md

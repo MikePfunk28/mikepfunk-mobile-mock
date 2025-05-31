@@ -1,9 +1,8 @@
 import * as THREE from "three";
-import { useRef, useState, useEffect, Suspense } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useRef, useState, Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Text, useTexture, Environment } from "@react-three/drei";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { TextureLoader } from "three";
 
 interface CameraControlsProps {
   enableRotate?: boolean;
@@ -57,9 +56,11 @@ const FloatingObject = ({
   label,
   url,
   iconSrc
-}: FloatingObjectProps) => {
-  const meshRef = useRef<THREE.Mesh>(null);
+}: FloatingObjectProps) => {  const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
+
+  // Always call useTexture to avoid conditional hook errors
+  const iconTexture = useTexture(iconSrc || '/placeholder.svg');
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -108,8 +109,8 @@ const FloatingObject = ({
           roughness={0.2}
           transparent={true}
           opacity={0.8}
-          emissive={hovered ? "#8BE9FD" : "#000000"}
-          emissiveIntensity={hovered ? 0.8 : 0}
+          emissive={hovered ? "#8BE9FD" : "#000000"}          emissiveIntensity={hovered ? 0.8 : 0}
+          map={iconSrc ? iconTexture : null}
         />
       </mesh>
       {label && (
@@ -122,19 +123,7 @@ const FloatingObject = ({
           anchorX="center"
           anchorY="middle"
         >
-          {label}
-        </Text>
-      )}
-      {iconSrc && (
-        <texture
-          attach="map"
-          url={(iconSrc)}
-          onUpdate={(texture) => {
-            texture.wrapS = THREE.RepeatWrapping;
-            texture.wrapT = THREE.RepeatWrapping;
-            texture.repeat.set(0.5, 0.5);
-          }}
-        />
+          {label}        </Text>
       )}
     </group>
   );
@@ -153,9 +142,8 @@ export const ProjectCard = ({
   project: Project,
   position: [number, number, number],
   onClick: () => void
-}) => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const [hovered, setHover] = useState(false);
+}) => {  const meshRef = useRef<THREE.Mesh>(null);
+  const [hovered, setHovered] = useState(false);
 
   useFrame(() => {
     if (!meshRef.current) return;
@@ -168,9 +156,8 @@ export const ProjectCard = ({
   return (
     <group position={position}>
       <mesh
-        ref={meshRef}
-        onPointerOver={() => setHover(true)}
-        onPointerOut={() => setHover(false)}
+        ref={meshRef}        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
         onClick={onClick}
       >
         <boxGeometry args={[1.5, 0.8, 0.1]} />
