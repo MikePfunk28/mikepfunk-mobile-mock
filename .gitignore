@@ -25,13 +25,26 @@ dist-ssr
 
 
 gptengineer.js
-.github/copilot-instructions.md
-
-.github/memory-bank/
-.github/cursor-agent.md
-.github/cursor-chat.md
-
-.github/HOWTO-workflows.md
-.github/HOWTO-memoryBank.md
-.github/storage.json
+.github/memory-bank/activeContext.md
+.github/memory-bank/codeContext.json
+.github/memory-bank/copilot-instructions.md
+.github/memory-bank/current-issue.md
+.github/memory-bank/cursor-agent.md
+.github/memory-bank/cursor-ask.md
+.gitignore
+.github/memory-bank/productContext.md
+.github/memory-bank/progress.md
+.github/memory-bank/npm-issue.md
+.github/memory-bank/project-context.md
+.github/memory-bank/projectbrief.md
+.github/memory-bank/systemPatterns.md
+.github/memory-bank/techContext.md
 .github/current-agent-request.md
+.github/cursor-agent.md
+.github/copilot-instructions.md
+.gitignore
+.github/cursor-chat.md
+.gitignore
+.github/HOWTO-memoryBank.md
+.github/HOWTO-workflows.md
+.github/storage.json
