@@ -20,23 +20,23 @@ interface BlogPost {
 const MOCK_POSTS: BlogPost[] = [
   {
     id: "1",
-    title: "Getting Started with AWS Cloud",
+    title: "Coming Soon: Getting Started with AWS Cloud",
     excerpt: "A beginners guide to working with AWS cloud services and infrastructure.",
-    date: "2023-11-15",
+    date: "06/01/2025",
     url: "https://blog.mikepfunk.com/"
   },
   {
     id: "2",
-    title: "Learning React in 2023",
+    title: "Coming Soon: Learning React in 2025",
     excerpt: "My journey with modern React development and best practices.",
-    date: "2023-09-22",
+    date: "06/01/2025",
     url: "https://blog.mikepfunk.com/"
   },
   {
     id: "3",
-    title: "Building 3D Web Experiences",
+    title: "Coming Soon: Building 3D Web Experiences",
     excerpt: "How to create interactive 3D content for the web using Three.js and React Three Fiber.",
-    date: "2023-08-10",
+    date: "06/01/2025",
     url: "https://blog.mikepfunk.com/"
   }
 ];

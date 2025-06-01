@@ -4,6 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Text, useTexture, Environment } from "@react-three/drei";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+
 interface CameraControlsProps {
   enableRotate?: boolean;
 }
@@ -133,6 +134,11 @@ interface Project {
   name: string;
   // Add other project properties as needed
 }
+//const light = new THREE.DirectionalLight()
+//light.color.set('blue')
+
+//const slight = new THREE.SpotLight()
+//slight.color.set('red')
 
 export const ProjectCard = ({
   project,
@@ -158,6 +164,7 @@ export const ProjectCard = ({
       <mesh
         ref={meshRef}        onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
+        onPointerLeave={() => setHovered(false)}
         onClick={onClick}
       >
         <boxGeometry args={[1.5, 0.8, 0.1]} />
@@ -166,7 +173,7 @@ export const ProjectCard = ({
           metalness={0.5}
           roughness={0.3}
           transparent={true}
-          opacity={0.7}
+          opacity={0.9}
           emissive={hovered ? "#8BE9FD" : "#000000"}
           emissiveIntensity={hovered ? 0.3 : 0}
         />
@@ -190,9 +197,9 @@ export const BackgroundScene = () => {
   return (
     <group>
       <FloatingObject
-        position={[-7, 4, -6]}
-        geometry="card"
-        color="#33C3F0"
+        position={[-7, 3, -6]}
+        geometry="box"
+        color="#fff"
         speed={0.6}
         label="Quantum Drift"
         url="https://mikepfunk.com/games/aws-cloud-mystery"
@@ -200,8 +207,8 @@ export const BackgroundScene = () => {
       />
       <FloatingObject
         position={[7, -4, -6]}
-        geometry="card"
-        color="#8BE9FD"
+        geometry="box"
+        color="#fff"
         speed={0.8}
         label="Databot"
         url="https://m.mikepfunk.com/databot"
@@ -209,17 +216,17 @@ export const BackgroundScene = () => {
       />
       <FloatingObject
         position={[-7, -4, -6]}
-        geometry="card"
-        color="#5383B0"
+        geometry="box"
+        color="#fff"
         speed={0.8}
         label="LinkedIn"
         url="https://www.linkedin.com/in/michaelpfundt/"
         iconSrc="/linkedin.gif"
       />
       <FloatingObject
-        position={[7, 4, -6]}
-        geometry="card"
-        color="#5383B0"
+        position={[7, 2, -6]}
+        geometry="box"
+        color="#fff"
         speed={0.6}
         label="GitHub"
         url="https://github.com/MikePfunk28"
@@ -227,12 +234,12 @@ export const BackgroundScene = () => {
       />
       <FloatingObject
         position={[0, -4, -6]}
-        geometry="card"
-        color="#5383B0"
+        geometry="box"
+        color="#fff"
         speed={0.8}
-        label="flashcards"
+        label="Flashcards"
         url="https://flashcards.mikepfunk.com"
-        iconSrc="/linkedin.gif"
+        iconSrc="/mikepfunk_transparent_177x182-3.png"
       />
     </group>
   );
@@ -255,10 +262,10 @@ export const Canvas3D = ({
         camera={{ position: cameraPosition }}
         gl={{ antialias: true, alpha: true }}
       >
-        <fog attach="fog" args={["#A3FFE0", 5, 15]} />
-        <ambientLight intensity={0.5} />
+        <fog attach="fog" args={["#F0F8FF", 20, 30]} />
+        <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.9} castShadow />
-        <spotLight position={[-5, 5, 5]} angle={0.15} penumbra={1} intensity={0.8} castShadow />
+        <spotLight position={[-5, 0, 5]} angle={0.15} penumbra={1} intensity={0.9} castShadow />
         <Suspense fallback={null}>
           <Environment preset="city" />
           {children}
