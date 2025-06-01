@@ -48,3 +48,6 @@ gptengineer.js
 .github/HOWTO-memoryBank.md
 .github/HOWTO-workflows.md
 .github/storage.json
+src/services/blog-api.js
+src/services/blog-template.js
+src/services/BlogService.ts
