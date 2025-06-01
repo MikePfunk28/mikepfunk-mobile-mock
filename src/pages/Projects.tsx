@@ -1,6 +1,6 @@
 
 import { useState, useEffect, Suspense } from "react";
-import { Canvas3D, ProjectCard } from "@/components/Canvas3D";
+import { ProjectCard, Canvas3D } from "@/components/Canvas3D";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Project, GithubService } from "@/services/GithubService";
@@ -41,11 +41,11 @@ const ProjectsPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
-      
+
       <main className="flex-grow flex flex-col">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold mb-8 text-funk-blue text-glow">Projects</h1>
-          
+
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[...Array(4)].map((_, i) => (
@@ -63,29 +63,29 @@ const ProjectsPage = () => {
                       // Arrange projects in a 3x3 grid in 3D space
                       const row = Math.floor(index / 3);
                       const col = index % 3;
-                      const x = (col - 1) * 2;
+                      const x = (col - 1) * 8;
                       const y = (1 - row) * 1.2;
-                      
+
                       return (
-                        <ProjectCard 
-                          key={project.id} 
-                          project={project} 
+                        <ProjectCard
+                          key={project.id}
+                          project={project}
                           position={[x, y, -2]}
-                          onClick={() => setSelectedProject(project)} 
+                          onClick={() => setSelectedProject(project)}
                         />
                       );
                     })}
                   </Suspense>
                 </Canvas3D>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {projects.map((project) => (
                   <Card key={project.id} className="glass-morph overflow-hidden">
                     <div className="p-4">
                       <h3 className="text-xl font-bold mb-2 text-funk-blue">{project.name}</h3>
                       <p className="text-funk-grey text-sm mb-4">{project.description}</p>
-                      
+
                       <div className="flex flex-wrap gap-2 mb-3">
                         {project.language && (
                           <span className="text-xs bg-funk-blue/20 text-funk-blue px-2 py-1 rounded-full">
@@ -98,12 +98,12 @@ const ProjectsPage = () => {
                           </span>
                         ))}
                       </div>
-                      
+
                       <div className="flex justify-between items-center">
                         <div className="text-xs text-funk-grey">
                           Updated: {new Date(project.updated_at).toLocaleDateString()}
                         </div>
-                        
+
                         <div className="flex space-x-2">
                           <Button size="sm" variant="outline" asChild>
                             <a href={project.url} target="_blank" rel="noopener noreferrer">
@@ -111,7 +111,7 @@ const ProjectsPage = () => {
                               Code
                             </a>
                           </Button>
-                          
+
                           {project.demo_url && (
                             <Button size="sm" className="bg-funk-blue hover:bg-funk-blue/80" asChild>
                               <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
