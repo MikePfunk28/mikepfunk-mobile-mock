@@ -20,24 +20,24 @@ interface BlogPost {
 const MOCK_POSTS: BlogPost[] = [
   {
     id: "1",
-    title: "Coming Soon: Getting Started with AWS Cloud",
-    excerpt: "A beginners guide to working with AWS cloud services and infrastructure.",
+    title: "Changing the AI Configuration",
+    excerpt: "Changing the configuration using Ollama Modelfiles to create a custom experience.",
     date: "06/01/2025",
-    url: "https://blog.mikepfunk.com/"
+    url: "https://blog.mikepfunk.com/blog/configuring-ai/"
   },
   {
     id: "2",
-    title: "Coming Soon: Learning React in 2025",
-    excerpt: "My journey with modern React development and best practices.",
-    date: "06/01/2025",
-    url: "https://blog.mikepfunk.com/"
+    title: "Local testing before deploying to AWS or the Cloud",
+    excerpt: "Using Localstack, Docker, and Terraform to automate local testing.",
+    date: "05/11/2025",
+    url: "https://blog.mikepfunk.com/blog/fourth-local/"
   },
   {
     id: "3",
-    title: "Coming Soon: Building 3D Web Experiences",
-    excerpt: "How to create interactive 3D content for the web using Three.js and React Three Fiber.",
-    date: "06/01/2025",
-    url: "https://blog.mikepfunk.com/"
+    title: "Building your own Container in Golang and Docker",
+    excerpt: "Use GO to create your own docker containers.",
+    date: "01/02/2024",
+    url: "https://blog.mikepfunk.com/blog/six-docker/"
   }
 ];
 
@@ -62,11 +62,11 @@ const BlogPage = () => {
       <Navigation />
 
       <main className="flex-grow">
-        <div className="relative h-[30vh] mb-8">
+        <div className="relative h-[50vh] mb-8">
           <Canvas3D>
             <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.6}>
               <Text
-                position={[0, 0, -1]}
+                position={[0, -1.0, -1]}
                 color="#33C3F0"
                 fontSize={0.8}
                 anchorX="center"

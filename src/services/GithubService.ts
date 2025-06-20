@@ -45,13 +45,13 @@ export class GithubService {
 
       // Filter out forked repositories and transform to our Project interface
       return repos
-        .filter(repo => !repo.fork && !/\.github\.io$/.test(repo.name))
+        .filter(repo => !repo.fork && !repo.name.endsWith('.github.io') && !repo.name.endsWith('https-github.com-Daizee-'))
         .map(repo => ({
           id: repo.id,
           name: repo.name.replace(/-/g, " "),
-          description: repo.description || "No description provided",
+          description: repo.description || " ",
           url: repo.html_url,
-          demo_url: repo.homepage,
+          demo_url: repo.homepage ?? undefined,
           language: repo.language || "Unknown",
           tags: repo.topics || [],
           stars: repo.stargazers_count,

@@ -11,11 +11,11 @@ const AboutPage = () => {
       <Navigation />
 
       <main className="flex-grow">
-        <div className="relative h-[30vh] mb-8">
+        <div className="relative h-[50vh] mb-8">
           <Canvas3D>
             <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
               <Text
-                position={[0, 0, -1]}
+                position={[0, -1.0, -1]}
                 color="#33C3F0"
                 fontSize={0.8}
                 anchorX="center"
@@ -47,6 +47,7 @@ const AboutPage = () => {
               translating customer needs into technical solutions with the Product Management team.
             </p>
           </Card>
+          <img src="/fred_and_I-small.png" alt="Fred and I doing what we do best" className="rounded-lg mb-8 w-full max-w-2xl mx-auto" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="glass-morph p-6">
