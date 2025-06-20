@@ -18,7 +18,7 @@ const GamesPage = () => {
       id: "aws-mystery",
       title: "AWS Cloud Mystery",
       description: "Solve the mysteries of AWS cloud services in this interactive adventure game.",
-      url: "https://mikepfunk.com/games/aws-cloud-mystery"
+      url: "https://mikepfunk28.github.io/Quantum-Drift-The-Lost-AWS-Architect/"
     }
   ];
 

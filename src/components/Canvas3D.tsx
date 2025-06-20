@@ -1,4 +1,4 @@
-import { type Mesh } from "three";
+import * as THREE from "three";
 import { useRef, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Text, useTexture, Environment } from "@react-three/drei";
@@ -41,6 +41,12 @@ interface FloatingObjectProps {
   iconSrc?: string;
 }
 
+// load a texture, set wrap mode to repeat
+const texture = new THREE.TextureLoader().load( "textures/water.jpg" );
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set( 4, 4 );
+
 const FloatingObject = ({
   position,
   rotation = [0, 0, 0],
@@ -51,8 +57,7 @@ const FloatingObject = ({
   label,
   url,
   iconSrc
-}: FloatingObjectProps) => {
-  const meshRef = useRef<Mesh>(null);
+}: FloatingObjectProps) => {  const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
   // Always call useTexture to avoid conditional hook errors
@@ -143,8 +148,7 @@ export const ProjectCard = ({
   project: Project,
   position: [number, number, number],
   onClick: () => void
-}) => {
-  const meshRef = useRef<Mesh>(null);
+}) => {  const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
   useFrame(() => {
@@ -198,7 +202,7 @@ export const BackgroundScene = () => {
         color="#fff"
         speed={0.6}
         label="Quantum Drift"
-        url="https://mikepfunk.com/games/aws-cloud-mystery"
+        url="https://mikepfunk28.github.io/Quantum-Drift-The-Lost-AWS-Architect/"
         iconSrc="/qd.png"
       />
       <FloatingObject
