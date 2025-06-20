@@ -14,7 +14,6 @@ To deploy this project, you can follow these steps:
 3. Build the project.
 4. Deploy the built files to your web server.
 
-This project is a mobile-friendly site template created using [Lovable](https://lovable.dev). It is designed to be easily customizable and deployable.
 
 ## What technologies are used for this project?
 
@@ -25,7 +24,3 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## Connecting to my existing site
-
-To connect this mobile site to my existing site is as simple as deploying it to a subdomain, or subdirectory, and then you can use CNAME record in your DNS to point to it.  Simple enough.

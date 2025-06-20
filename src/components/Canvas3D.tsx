@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import { type Mesh } from "three";
 import { useRef, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Text, useTexture, Environment } from "@react-three/drei";
@@ -41,12 +41,6 @@ interface FloatingObjectProps {
   iconSrc?: string;
 }
 
-// load a texture, set wrap mode to repeat
-const texture = new THREE.TextureLoader().load( "textures/water.jpg" );
-texture.wrapS = THREE.RepeatWrapping;
-texture.wrapT = THREE.RepeatWrapping;
-texture.repeat.set( 4, 4 );
-
 const FloatingObject = ({
   position,
   rotation = [0, 0, 0],
@@ -57,7 +51,8 @@ const FloatingObject = ({
   label,
   url,
   iconSrc
-}: FloatingObjectProps) => {  const meshRef = useRef<THREE.Mesh>(null);
+}: FloatingObjectProps) => {
+  const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
   // Always call useTexture to avoid conditional hook errors
@@ -148,7 +143,8 @@ export const ProjectCard = ({
   project: Project,
   position: [number, number, number],
   onClick: () => void
-}) => {  const meshRef = useRef<THREE.Mesh>(null);
+}) => {
+  const meshRef = useRef<Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
   useFrame(() => {
@@ -162,7 +158,7 @@ export const ProjectCard = ({
   return (
     <group position={position}>
       <mesh
-        ref={meshRef}        onPointerOver={() => setHovered(true)}
+        ref={meshRef}onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         onPointerLeave={() => setHovered(false)}
         onClick={onClick}
@@ -197,7 +193,7 @@ export const BackgroundScene = () => {
   return (
     <group>
       <FloatingObject
-        position={[-7, 3, -6]}
+        position={[-10, 2, -6]}
         geometry="box"
         color="#fff"
         speed={0.6}
@@ -206,16 +202,16 @@ export const BackgroundScene = () => {
         iconSrc="/qd.png"
       />
       <FloatingObject
-        position={[7, -4, -6]}
+        position={[10, -5, -6]}
         geometry="box"
         color="#fff"
         speed={0.8}
         label="Databot"
-        url="https://m.mikepfunk.com/databot"
+        url="https://mikepfunk.com/databot"
         iconSrc="/mikepfunk_transparent_177x182-2.png"
       />
       <FloatingObject
-        position={[-7, -4, -6]}
+        position={[-10, -5, -6]}
         geometry="box"
         color="#fff"
         speed={0.8}
@@ -224,7 +220,7 @@ export const BackgroundScene = () => {
         iconSrc="/linkedin.gif"
       />
       <FloatingObject
-        position={[7, 2, -6]}
+        position={[10, 2, -6]}
         geometry="box"
         color="#fff"
         speed={0.6}
@@ -233,13 +229,22 @@ export const BackgroundScene = () => {
         iconSrc="/github.png"
       />
       <FloatingObject
-        position={[0, -4, -6]}
+        position={[0, -5, -6]}
         geometry="box"
         color="#fff"
         speed={0.8}
         label="Flashcards"
         url="https://flashcards.mikepfunk.com"
         iconSrc="/mikepfunk_transparent_177x182-3.png"
+      />
+      <FloatingObject
+        position={[0, 2, -6]}
+        geometry="box"
+        color="#fff"
+        speed={0.6}
+        label="Mnemonic"
+        url="https://mnemonic.mikepfunk.com"
+        iconSrc="/mikepfunk_transparent_177x182-4.png"
       />
     </group>
   );
