@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           // Split Three.js into its own chunk
           'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-          // Split UI components 
+          // Split UI components
           'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-tabs', '@radix-ui/react-toast'],
           // Split router
           'router-vendor': ['react-router-dom'],
