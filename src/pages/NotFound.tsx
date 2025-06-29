@@ -1,10 +1,9 @@
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Canvas3D } from "@/components/Canvas3D";
 import { Text, Float } from "@react-three/drei";
-import { Link } from "react-router-dom";
 import { Home } from "lucide-react";
 
 const NotFound = () => {
@@ -19,7 +18,8 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex-grow flex flex-col items-center justify-center">          <div className="relative h-[50vh] w-full mb-8">
+      <div className="flex-grow flex flex-col items-center justify-center">
+        <div className="relative h-[50vh] w-full mb-8">
           <Canvas3D>
             <Float speed={2} rotationIntensity={0.5} floatIntensity={0.8}>
               <Text
