@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import { useRef, useState, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useRef, useState, Suspense, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Text, useTexture, Environment } from "@react-three/drei";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -16,9 +16,9 @@ const CameraControls = ({ enableRotate = true }: CameraControlsProps) => {
   return (
     <OrbitControls
       ref={controlsRef}
-      enableZoom={true}
+      enableZoom={false}
       enablePan={false}
-      enableRotate={enableRotate}
+      enableRotate={false}
       minPolarAngle={Math.PI / 6}
       maxPolarAngle={Math.PI / 2}
       dampingFactor={0.05}
@@ -59,17 +59,23 @@ const FloatingObject = ({
   iconSrc
 }: FloatingObjectProps) => {  const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
+  const [parallax, setParallax] = useState<[number, number]>([0, 0]);
 
   // Always call useTexture to avoid conditional hook errors
   const iconTexture = useTexture(iconSrc || '/placeholder.svg');
 
-  useFrame((state) => {
-    if (!meshRef.current) return;
 
-    const t = state.clock.getElapsedTime() * speed;
-    meshRef.current.position.y = position[1] + Math.sin(t) * 0.1;
-    meshRef.current.rotation.y += 0.01 * speed;
-  });
+
+  useEffect(() => {
+    if (!hovered) return;
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 2 - 1; // -1 to 1
+      const y = (e.clientY / window.innerHeight) * 2 - 1;
+      setParallax([x * 0.3, y * 0.6]); // adjust for tilt strength
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [hovered]);
 
 
   const handleClick = () => {
@@ -98,33 +104,34 @@ const FloatingObject = ({
       <mesh
         ref={meshRef}
         position={position}
-        rotation={rotation as [number, number, number]}
+        rotation={hovered ? [parallax[1], 0, -parallax[0]] : rotation}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         onClick={handleClick}
       >
         {geometryElement}
         <meshStandardMaterial
-          color={hovered ? "#8BE9FD" : color}
+          color={hovered ? "#33AAE0" : color}
           metalness={0.7}
           roughness={0.2}
           transparent={true}
           opacity={0.8}
-          emissive={hovered ? "#8BE9FD" : "#000000"}          emissiveIntensity={hovered ? 0.8 : 0}
+          emissive={hovered ? "#000000" : "#000000"}          emissiveIntensity={hovered ? 0.8 : 0}
           map={iconSrc ? iconTexture : null}
         />
       </mesh>
       {label && (
         <Text
           position={[position[0], position[1] - 1.9, position[2]]}
-          color={hovered ? "#8BE9FD" : "#33C3F0"}
+          color={hovered ? "#33AAE0" : "#33C3F0"}
           fontSize={0.7}
           maxWidth={3}
           textAlign="center"
           anchorX="center"
           anchorY="middle"
         >
-          {label}        </Text>
+          {label}
+        </Text>
       )}
     </group>
   );
@@ -151,30 +158,24 @@ export const ProjectCard = ({
 }) => {  const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
-  useFrame(() => {
-    if (!meshRef.current) return;
-    meshRef.current.rotation.y += 0.005;
-    if (hovered) {
-      meshRef.current.rotation.y += 0.01;
-    }
-  });
+
 
   return (
     <group position={position}>
       <mesh
-        ref={meshRef}        onPointerOver={() => setHovered(true)}
+        ref={meshRef}onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         onPointerLeave={() => setHovered(false)}
         onClick={onClick}
       >
         <boxGeometry args={[1.5, 0.8, 0.1]} />
         <meshStandardMaterial
-          color={hovered ? "#8BE9FD" : "#33C3F0"}
+          color={hovered ? "#33AAE0" : "#33C3F0"}
           metalness={0.5}
           roughness={0.3}
           transparent={true}
           opacity={0.9}
-          emissive={hovered ? "#8BE9FD" : "#000000"}
+          emissive={hovered ? "#33AAE0" : "#000000"}
           emissiveIntensity={hovered ? 0.3 : 0}
         />
         <Text
@@ -197,25 +198,25 @@ export const BackgroundScene = () => {
   return (
     <group>
       <FloatingObject
-        position={[-7, 3, -6]}
+        position={[-10, 2, -6]}
         geometry="box"
         color="#fff"
         speed={0.6}
         label="Quantum Drift"
-        url="https://mikepfunk.com/games/aws-cloud-mystery"
+        url="https://mikepfunk28.github.io/Quantum-Drift-The-Lost-AWS-Architect/"
         iconSrc="/qd.png"
       />
       <FloatingObject
-        position={[7, -4, -6]}
+        position={[10, -5, -6]}
         geometry="box"
         color="#fff"
         speed={0.8}
         label="Databot"
-        url="https://m.mikepfunk.com/databot"
+        url="https://mikepfunk.com/databot"
         iconSrc="/mikepfunk_transparent_177x182-2.png"
       />
       <FloatingObject
-        position={[-7, -4, -6]}
+        position={[-10, -5, -6]}
         geometry="box"
         color="#fff"
         speed={0.8}
@@ -224,7 +225,7 @@ export const BackgroundScene = () => {
         iconSrc="/linkedin.gif"
       />
       <FloatingObject
-        position={[7, 2, -6]}
+        position={[10, 2, -6]}
         geometry="box"
         color="#fff"
         speed={0.6}
@@ -233,13 +234,22 @@ export const BackgroundScene = () => {
         iconSrc="/github.png"
       />
       <FloatingObject
-        position={[0, -4, -6]}
+        position={[0, -5, -6]}
         geometry="box"
         color="#fff"
         speed={0.8}
         label="Flashcards"
         url="https://flashcards.mikepfunk.com"
         iconSrc="/mikepfunk_transparent_177x182-3.png"
+      />
+      <FloatingObject
+        position={[0, 2, -6]}
+        geometry="box"
+        color="#fff"
+        speed={0.6}
+        label="Mnemonic"
+        url="https://mnemonic.mikepfunk.com"
+        iconSrc="/mikepfunk_transparent_177x182-4.png"
       />
     </group>
   );

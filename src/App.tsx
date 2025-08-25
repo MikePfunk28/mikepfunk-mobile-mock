@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Databot from "./pages/Databot";
 import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
+import Mnemonic from "./pages/Mnemonic";
 
 const queryClient = new QueryClient();
 
@@ -23,8 +24,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/mnemonic" element={<Mnemonic />} />
           <Route path="/databot" element={<Databot />} />
           <Route path="/games" element={<Games />} />
           <Route path="*" element={<NotFound />} />
