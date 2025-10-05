@@ -19,6 +19,11 @@ const DatabotPage = () => {
                 fontSize={0.8}
                 anchorX="center"
                 anchorY="middle"
+                outlineWidth={0.06}
+                outlineColor="#66E3FF"
+                outlineBlur={0.02}
+                strokeWidth={0.02}
+                strokeColor="#66E3FF"
               >
                 Databot
               </Text>
@@ -63,7 +68,7 @@ const DatabotPage = () => {
 
         <div className="container mx-auto px-4 py-8">
           <Card className="glass-morph p-6 mb-8">
-            <h1 className="text-3xl font-bold mb-4 text-funk-blue text-glow">Databot</h1>
+            <h1 className="text-3xl font-bold mb-4 text-funk-blue text-glow text-center">Databot</h1>
             <p className="text-funk-grey mb-4">
               Databot is an AI-powered data analysis tool that helps you make
               sense of your data quickly and easily.
@@ -96,42 +101,42 @@ const DatabotPage = () => {
 
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container mx-auto px-4 py-8">
-        <Card className="glass-morph p-6">
-              <h2 className="text-xl font-bold mb-4 text-funk-blue">Features</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-medium text-funk-white">Embeds your data for easy lookup</h3>
-                  <p className="text-sm text-funk-grey">Embeds your data and knows advanced business metrics to provide insights, and embed the results for you.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Can run locally</h3>
-                  <p className="text-sm text-funk-grey">Small model can easily run on your local machine.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Integrates with your app</h3>
-                  <p className="text-sm text-funk-grey">Small enough to be embedded into your application or website.</p>
-                </div>
+          <Card className="glass-morph p-6">
+            <h2 className="text-xl font-bold mb-4 text-funk-blue">Features</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-medium text-funk-white">Embeds your data for easy lookup</h3>
+                <p className="text-sm text-funk-grey">Embeds your data and knows advanced business metrics to provide insights, and embed the results for you.</p>
               </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Can run locally</h3>
+                <p className="text-sm text-funk-grey">Small model can easily run on your local machine.</p>
+              </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Integrates with your app</h3>
+                <p className="text-sm text-funk-grey">Small enough to be embedded into your application or website.</p>
+              </div>
+            </div>
 
-            </Card>
-            <Card className="glass-morph p-6">
-              <h2 className="text-xl font-bold mb-4 text-funk-blue">Limitations</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-medium text-funk-white">Context Window</h3>
-                  <p className="text-sm text-funk-grey">Make sure you can fit your data within the context window.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Built for Analysis</h3>
-                  <p className="text-sm text-funk-grey">The model is made to analyze data, and translate that into actionable insights.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Currently Text only</h3>
-                  <p className="text-sm text-funk-grey">The model is limited to text only for now, voice is on the roadmap, and will be implemented as soon as possible.</p>
-                </div>
+          </Card>
+          <Card className="glass-morph p-6">
+            <h2 className="text-xl font-bold mb-4 text-funk-blue">Limitations</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-medium text-funk-white">Context Window</h3>
+                <p className="text-sm text-funk-grey">Make sure you can fit your data within the context window.</p>
               </div>
-            </Card>
-          </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Built for Analysis</h3>
+                <p className="text-sm text-funk-grey">The model is made to analyze data, and translate that into actionable insights.</p>
+              </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Currently Text only</h3>
+                <p className="text-sm text-funk-grey">The model is limited to text only for now, voice is on the roadmap, and will be implemented as soon as possible.</p>
+              </div>
+            </div>
+          </Card>
+        </div>
 
       </main>
 
