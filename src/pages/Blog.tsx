@@ -71,6 +71,11 @@ const BlogPage = () => {
                 fontSize={0.8}
                 anchorX="center"
                 anchorY="middle"
+                outlineWidth={0.06}
+                outlineColor="#66E3FF"
+                outlineBlur={0.02}
+                strokeWidth={0.02}
+                strokeColor="#66E3FF"
               >
                 Blog
               </Text>

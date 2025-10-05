@@ -19,6 +19,11 @@ const MnemonicPage = () => {
                 fontSize={0.8}
                 anchorX="center"
                 anchorY="middle"
+                outlineWidth={0.06}
+                outlineColor="#66E3FF"
+                outlineBlur={0.02}
+                strokeWidth={0.02}
+                strokeColor="#66E3FF"
               >
                 Mnemonic
               </Text>
@@ -28,7 +33,7 @@ const MnemonicPage = () => {
 
         <div className="container mx-auto px-4 py-8">
           <Card className="glass-morph p-6 mb-8">
-            <h1 className="text-3xl font-bold mb-4 text-funk-blue text-glow">Mnemonic App</h1>
+            <h1 className="text-3xl font-bold mb-4 text-funk-blue text-glow text-center">Mnemonic App</h1>
             <p className="text-funk-grey mb-4">
               Mnemonic is a simple tool to save and help you remember terms you are studying.
               I am going to add advanced AI capabilities to it, allowing you to have it suggest
@@ -52,42 +57,42 @@ const MnemonicPage = () => {
 
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container mx-auto px-4 py-8">
-        <Card className="glass-morph p-6">
-              <h2 className="text-xl font-bold mb-4 text-funk-blue">Features</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-medium text-funk-white">Create your own Mnemonic Device</h3>
-                  <p className="text-sm text-funk-grey">Never forget a Mnemonic device again.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Quiz Yourself</h3>
-                  <p className="text-sm text-funk-grey">Test your knowledge with quizzes based on your saved terms.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Practice Mode</h3>
-                  <p className="text-sm text-funk-grey">Practice mode is how you quiz yourself, show and hide the answers.</p>
-                </div>
+          <Card className="glass-morph p-6">
+            <h2 className="text-xl font-bold mb-4 text-funk-blue">Features</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-medium text-funk-white">Create your own Mnemonic Device</h3>
+                <p className="text-sm text-funk-grey">Never forget a Mnemonic device again.</p>
               </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Quiz Yourself</h3>
+                <p className="text-sm text-funk-grey">Test your knowledge with quizzes based on your saved terms.</p>
+              </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Practice Mode</h3>
+                <p className="text-sm text-funk-grey">Practice mode is how you quiz yourself, show and hide the answers.</p>
+              </div>
+            </div>
 
-            </Card>
-            <Card className="glass-morph p-6">
-              <h2 className="text-xl font-bold mb-4 text-funk-blue">AI Limitations</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-medium text-funk-white">Context Window</h3>
-                  <p className="text-sm text-funk-grey">Make sure you can fit your data within the context window.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Built to Create Mnemonic Devices</h3>
-                  <p className="text-sm text-funk-grey">The model is designed to help you create and manage your own mnemonic devices.</p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-funk-white">Currently Text only</h3>
-                  <p className="text-sm text-funk-grey">The model is limited to text only for now, adding AI is on the roadmap, and will be implemented as soon as possible.</p>
-                </div>
+          </Card>
+          <Card className="glass-morph p-6">
+            <h2 className="text-xl font-bold mb-4 text-funk-blue">AI Limitations</h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="font-medium text-funk-white">Context Window</h3>
+                <p className="text-sm text-funk-grey">Make sure you can fit your data within the context window.</p>
               </div>
-            </Card>
-          </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Built to Create Mnemonic Devices</h3>
+                <p className="text-sm text-funk-grey">The model is designed to help you create and manage your own mnemonic devices.</p>
+              </div>
+              <div>
+                <h3 className="font-medium text-funk-white">Currently Text only</h3>
+                <p className="text-sm text-funk-grey">The model is limited to text only for now, adding AI is on the roadmap, and will be implemented as soon as possible.</p>
+              </div>
+            </div>
+          </Card>
+        </div>
 
       </main>
 

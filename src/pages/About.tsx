@@ -21,6 +21,11 @@ const AboutPage = () => {
                 fontSize={0.8}
                 anchorX="center"
                 anchorY="middle"
+                outlineWidth={0.06}
+                outlineColor="#66E3FF"
+                outlineBlur={0.02}
+                strokeWidth={0.015}
+                strokeColor="#66E3FF"
               >
                 About Me
               </Text>
@@ -56,18 +61,18 @@ const AboutPage = () => {
               <ul className="space-y-2 text-funk-grey">
                 <li><b>FullStack Development</b> (React, NextJS, TypeScript)</li>
                 <li><b>Cloud Architecture</b>, (IaC, and DevOps CI/CD Pipeline, CRUD)</li>
-                <li><b>Backend/API Development</b> (Node.js, Python, Express, FastAPI)</li>
-                  <ol>
-                    <li className="ml-4">(AWS) Serverless, Lambda, API Gateway, Bedrock, DynamoDB</li>
-                    <li className="ml-4">(GCP) Big Query, OAuth, Workspace, Gemini, Gemma</li>
-                    <li className="ml-4">(Azure) OpenAI, Promptflow, Github Copilot</li>
-                    <li className="ml-4">(Cloudflare) Pages, Durable Objects, KV, Workers</li>
+                <li>
+                  <b>Backend/API Development</b> (Node.js, Python, Express, FastAPI)
+                  <ol className="list-decimal ml-6 mt-2">
+                    <li>(AWS) Serverless, Lambda, API Gateway, Bedrock, DynamoDB</li>
+                    <li>(GCP) Big Query, OAuth, Workspace, Gemini, Gemma</li>
+                    <li>(Azure) OpenAI, Promptflow, Github Copilot</li>
+                    <li>(Cloudflare) Pages, Durable Objects, KV, Workers</li>
                   </ol>
+                </li>
                 <li><b>Database Management</b> (PostgreSQL, MongoDB, Pinecone)</li>
                 <li><b>3D Web Development</b> (ThreeJS, Tailwind CSS, React)</li>
                 <li><b>UI/UX Design</b> (ShadCN, Tailwind CSS, JSX)</li>
-
-
                 <li><b>Machine Learning</b> (Scikit-learn, Keras, TensorFlow, PyTorch)</li>
                 <li><b>AI/ML Development</b> (ROC, Vulkan, llama.cpp, LangChain)</li>
               </ul>
@@ -136,18 +141,22 @@ const AboutPage = () => {
                     alt="Cherokee's LinkedIn post about my AWS Learning Game"
                     className="rounded shadow-lg hover:underline relative inline-block"
                   />
-              </div>
-            </a>
+                </div>
+              </a>
             </Card>
             <Card className="glass-morph p-6">
               <h2 className="text-xl font-bold mb-4 text-funk-blue">LinkedIn</h2>
               <LinkedInBadge />
-
-              <p className="text-funk-grey pt-8 mb-2">
-                <h1 className="text-xl font-bold mb-4 text-funk-blue">References:</h1> Other than
-                the video, you can view Cherokee's reference, as well as my other references on my
-                <a href="https://www.linkedin.com/in/mikepfunk/" target="_blank" rel="noopener noreferrer"><b><i>&nbsp;LinkedIn&nbsp;</i></b></a>page.
-              </p>
+              <div className="text-funk-grey pt-8 mb-2">
+                <h3 className="text-xl font-bold mb-2 text-funk-blue">References:</h3>
+                <p>
+                  Other than the video, you can view Cherokee's reference, as well as my other references on my
+                  {" "}
+                  <a href="https://www.linkedin.com/in/mikepfunk/" target="_blank" rel="noopener noreferrer"><b><i>LinkedIn</i></b></a>
+                  {" "}
+                  page.
+                </p>
+              </div>
               <br />
               <p className="text-funk-grey">You can view my other projects, articles I've written, and more on my LinkedIn
                 page.  I am always looking for new opportunities to collaborate and create innovative solutions.
