@@ -86,22 +86,22 @@ const ProjectsPage = () => {
       {/* Categories section BELOW the Canvas3D */}
       <main className="flex-grow flex flex-col">
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-funk-blue text-glow">Project Categories</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-funk-blue text-glow text-center">Project Categories</h2>
 
           {loading ? (
             <div className="flex justify-center items-center h-64">
               <div className="text-funk-blue">Loading projects...</div>
             </div>
           ) : (            <Tabs defaultValue="all" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 mb-6">
-                <TabsTrigger value="all">All ({projects.length})</TabsTrigger>
-                <TabsTrigger value="ai">AI ({categorizedProjects.AI.length})</TabsTrigger>
-                <TabsTrigger value="games">Games ({categorizedProjects.Games.length})</TabsTrigger>
-                <TabsTrigger value="leetcode">LeetCode/Learning ({categorizedProjects.Leetcode.length})</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-6 h-auto">
+                <TabsTrigger value="all" className="text-xs sm:text-sm p-2 sm:p-3">All ({projects.length})</TabsTrigger>
+                <TabsTrigger value="ai" className="text-xs sm:text-sm p-2 sm:p-3">AI ({categorizedProjects.AI.length})</TabsTrigger>
+                <TabsTrigger value="games" className="text-xs sm:text-sm p-2 sm:p-3">Games ({categorizedProjects.Games.length})</TabsTrigger>
+                <TabsTrigger value="leetcode" className="text-xs sm:text-sm p-2 sm:p-3">Learning ({categorizedProjects.Leetcode.length})</TabsTrigger>
               </TabsList>
 
               <TabsContent value="all">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
                   {projects.map((project) => (
                     <CompactProjectCard key={project.id} project={project} category={categorizeProject(project)} />
                   ))}
@@ -109,7 +109,7 @@ const ProjectsPage = () => {
               </TabsContent>
 
               <TabsContent value="ai">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
                   {categorizedProjects.AI.map((project) => (
                     <CompactProjectCard key={project.id} project={project} category="AI" />
                   ))}
@@ -117,13 +117,13 @@ const ProjectsPage = () => {
               </TabsContent>
 
               <TabsContent value="games">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
                   {categorizedProjects.Games.map((project) => (
                     <CompactProjectCard key={project.id} project={project} category="Games" />
                   ))}
                 </div>
               </TabsContent>              <TabsContent value="leetcode">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
                   {categorizedProjects.Leetcode.map((project) => (
                     <CompactProjectCard key={project.id} project={project} category="LeetCode/Learning" />
                   ))}

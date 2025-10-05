@@ -18,6 +18,8 @@ export const Navigation = () => {
     { name: "Projects", href: "/projects", icon: <Folder size={14} /> },
     { name: "Blog", href: "/blog", icon: <Book size={14} /> },
     { name: "Mnemonic", href: "/mnemonic", icon: <User size={14} /> },
+
+    { name: "Ai_Hub", href: "/Ai_Hub", icon: <User size={14} /> },
     { name: "Databot", href: "/databot", icon: <User size={14} /> },
     { name: "Games", href: "/games", icon: <Smartphone size={14} /> },
   ];
@@ -28,8 +30,8 @@ export const Navigation = () => {
       <div className="glass-morph px-4 py-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="font-bold text-xl text-funk-blue text-glow">MikePFunk</span>
-          </div>          <div className="flex items-center space-x-2">
+            <span className="font-black text-xl text-funk-blue text-glow-strong">MikePFunk</span>
+          </div>          <div className="flex items-center space-x-2 responsive-icons">
             <a
               href="https://github.com/mikepfunk"
               target="_blank"
@@ -51,7 +53,7 @@ export const Navigation = () => {
       >
         {/* Menu Indicator Bar */}
         <div className="glass-morph mt-1 px-4 py-2 mx-2 rounded-md border border-funk-blue/20 cursor-pointer">
-          <div className="flex items-center justify-center space-x-2 text-funk-white">
+          <div className="flex items-center justify-center space-x-2 text-funk-white responsive-icons">
             <Menu size={16} />
             <span className="text-sm">Menu</span>
             <ChevronDown
@@ -69,7 +71,7 @@ export const Navigation = () => {
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    className="flex items-center space-x-2 p-2 rounded-md hover:bg-funk-blue/20 transition-colors text-funk-white"
+                    className="flex items-center space-x-2 p-2 rounded-md hover:bg-funk-blue/20 transition-colors text-funk-white responsive-icons"
                   >
                     {item.icon}
                     <span>{item.name}</span>
