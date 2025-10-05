@@ -76,6 +76,62 @@
     text-shadow: 0 0 15px rgba(51, 195, 240, 0.7);
   }
 
+  .text-glow-strong {
+    text-shadow:
+      0 0 10px rgba(51, 195, 240, 0.8),
+      0 0 20px rgba(51, 195, 240, 0.6),
+      0 0 30px rgba(51, 195, 240, 0.4);
+  }
+
+  /* Custom responsive breakpoint for 468px */
+  @media (max-width: 468px) {
+    .responsive-icons {
+      transform: scale(0.9);
+    }
+
+    .responsive-text {
+      font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+
+    .responsive-subtitle {
+      font-size: clamp(0.875rem, 4vw, 1.125rem);
+    }
+  }
+
+  /* Fix project cards and tabs below 925px to prevent overlapping */
+  @media (max-width: 925px) {
+    .project-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .project-tabs {
+      font-size: 0.75rem;
+      padding: 0.5rem;
+    }
+
+    .compact-project-card {
+      min-width: 280px;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .project-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .project-tabs {
+      font-size: 0.625rem;
+      padding: 0.25rem;
+    }
+
+    .compact-project-card {
+      min-width: 100%;
+    }
+  }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;

@@ -37,7 +37,7 @@ const GamesPage = () => {
           <h1 className="text-3xl font-bold mb-8 text-funk-blue text-glow">Games</h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {games.map((game) => (
+            {games.map( ( game ) => (
               <Card key={game.id} className="glass-morph overflow-hidden">
                 <div className="p-4">
                   <div className="flex items-center mb-4">
@@ -58,7 +58,7 @@ const GamesPage = () => {
                   </Button>
                 </div>
               </Card>
-            ))}
+            ) )}
           </div>
         </div>
       </main>
@@ -69,16 +69,21 @@ const GamesPage = () => {
 };
 
 const GameScene = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<THREE.Mesh>( null );
 
   return (
     <>
       <Text
-        position={[0, -1, -2]}
+        position={[0, -1.0, -1]}
         color="#33C3F0"
         fontSize={0.8}
         anchorX="center"
         anchorY="middle"
+        outlineWidth={0.06}
+        outlineColor="#66E3FF"
+        outlineBlur={0.02}
+        strokeWidth={0.02}
+        strokeColor="#66E3FF"
       >
         Games
       </Text>

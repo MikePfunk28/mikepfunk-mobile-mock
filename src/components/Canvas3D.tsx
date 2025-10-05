@@ -9,9 +9,9 @@ interface CameraControlsProps {
   enableRotate?: boolean;
 }
 
-const CameraControls = ({ enableRotate = true }: CameraControlsProps) => {
-  const controlsRef = useRef<never>(null);
-  const isMobile = useIsMobile();
+const CameraControls = ( { enableRotate = true }: CameraControlsProps ) => {
+  const controlsRef = useRef<never>( null );
+  const isMobile = useIsMobile( 680 );
 
   return (
     <OrbitControls
@@ -47,7 +47,7 @@ texture.wrapS = THREE.RepeatWrapping;
 texture.wrapT = THREE.RepeatWrapping;
 texture.repeat.set( 4, 4 );
 
-const FloatingObject = ({
+const FloatingObject = ( {
   position,
   rotation = [0, 0, 0],
   scale = 3,
@@ -57,35 +57,37 @@ const FloatingObject = ({
   label,
   url,
   iconSrc
-}: FloatingObjectProps) => {  const meshRef = useRef<THREE.Mesh>(null);
-  const [hovered, setHovered] = useState(false);
-  const [parallax, setParallax] = useState<[number, number]>([0, 0]);
+}: FloatingObjectProps ) => {
+  const meshRef = useRef<THREE.Mesh>( null );
+  const [hovered, setHovered] = useState( false );
+  const [parallax, setParallax] = useState<[number, number]>( [0, 0] );
+  const isNarrow = useIsMobile( 680 );
 
   // Always call useTexture to avoid conditional hook errors
-  const iconTexture = useTexture(iconSrc || '/placeholder.svg');
+  const iconTexture = useTexture( iconSrc || '/placeholder.svg' );
 
 
 
-  useEffect(() => {
-    if (!hovered) return;
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1; // -1 to 1
-      const y = (e.clientY / window.innerHeight) * 2 - 1;
-      setParallax([x * 0.3, y * 0.6]); // adjust for tilt strength
+  useEffect( () => {
+    if ( !hovered ) return;
+    const handleMouseMove = ( e: MouseEvent ) => {
+      const x = ( e.clientX / window.innerWidth ) * 2 - 1; // -1 to 1
+      const y = ( e.clientY / window.innerHeight ) * 2 - 1;
+      setParallax( [x * 0.3, y * 0.6] ); // adjust for tilt strength
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [hovered]);
+    window.addEventListener( "mousemove", handleMouseMove );
+    return () => window.removeEventListener( "mousemove", handleMouseMove );
+  }, [hovered] );
 
 
   const handleClick = () => {
-    if (url) {
-      window.open(url, '_blank');
+    if ( url ) {
+      window.open( url, '_blank' );
     }
   };
 
   let geometryElement;
-  switch(geometry) {
+  switch ( geometry ) {
     case "sphere":
       geometryElement = <sphereGeometry args={[0.7 * scale, 32, 32]} />;
       break;
@@ -105,8 +107,8 @@ const FloatingObject = ({
         ref={meshRef}
         position={position}
         rotation={hovered ? [parallax[1], 0, -parallax[0]] : rotation}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
+        onPointerOver={() => setHovered( true )}
+        onPointerOut={() => setHovered( false )}
         onClick={handleClick}
       >
         {geometryElement}
@@ -116,17 +118,16 @@ const FloatingObject = ({
           roughness={0.2}
           transparent={true}
           opacity={0.8}
-          emissive={hovered ? "#000000" : "#000000"}          emissiveIntensity={hovered ? 0.8 : 0}
+          emissive={hovered ? "#000000" : "#000000"} emissiveIntensity={hovered ? 0.8 : 0}
           map={iconSrc ? iconTexture : null}
         />
       </mesh>
       {label && (
         <Text
-          position={[position[0], position[1] - 1.9, position[2]]}
-          color={hovered ? "#33AAE0" : "#33C3F0"}
-          fontSize={0.7}
-          maxWidth={3}
-          textAlign="center"
+          position={[position[0], position[1] - 1.9, position[2]]} // moved down from -1.5/-1.6
+          color="#33AAE0"
+          fontSize={0.58}
+          maxWidth={4}
           anchorX="center"
           anchorY="middle"
         >
@@ -147,7 +148,7 @@ interface Project {
 //const slight = new THREE.SpotLight()
 //slight.color.set('red')
 
-export const ProjectCard = ({
+export const ProjectCard = ( {
   project,
   position,
   onClick
@@ -155,17 +156,18 @@ export const ProjectCard = ({
   project: Project,
   position: [number, number, number],
   onClick: () => void
-}) => {  const meshRef = useRef<THREE.Mesh>(null);
-  const [hovered, setHovered] = useState(false);
+} ) => {
+  const meshRef = useRef<THREE.Mesh>( null );
+  const [hovered, setHovered] = useState( false );
 
 
 
   return (
     <group position={position}>
       <mesh
-        ref={meshRef}onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-        onPointerLeave={() => setHovered(false)}
+        ref={meshRef} onPointerOver={() => setHovered( true )}
+        onPointerOut={() => setHovered( false )}
+        onPointerLeave={() => setHovered( false )}
         onClick={onClick}
       >
         <boxGeometry args={[1.5, 0.8, 0.1]} />
@@ -194,63 +196,25 @@ export const ProjectCard = ({
   );
 };
 
+// Removed accidental exported component named useIsMobile
+
 export const BackgroundScene = () => {
+  // If below 680px, bring objects closer horizontally and vertically without scaling
+  const isNarrow = useIsMobile( 680 );
+  const compress = ( v: [number, number, number] ): [number, number, number] => {
+    if ( !isNarrow ) return v;
+    // Tighten X and Y spacing more on very narrow screens; keep Z the same to avoid size change
+    return [v[0] * 0.5, v[1] * 0.8, v[2]];
+  };
+
   return (
     <group>
-      <FloatingObject
-        position={[-10, 2, -6]}
-        geometry="box"
-        color="#fff"
-        speed={0.6}
-        label="Quantum Drift"
-        url="https://mikepfunk28.github.io/Quantum-Drift-The-Lost-AWS-Architect/"
-        iconSrc="/qd.png"
-      />
-      <FloatingObject
-        position={[10, -5, -6]}
-        geometry="box"
-        color="#fff"
-        speed={0.8}
-        label="Databot"
-        url="https://mikepfunk.com/databot"
-        iconSrc="/mikepfunk_transparent_177x182-2.png"
-      />
-      <FloatingObject
-        position={[-10, -5, -6]}
-        geometry="box"
-        color="#fff"
-        speed={0.8}
-        label="LinkedIn"
-        url="https://www.linkedin.com/in/michaelpfundt/"
-        iconSrc="/linkedin.gif"
-      />
-      <FloatingObject
-        position={[10, 2, -6]}
-        geometry="box"
-        color="#fff"
-        speed={0.6}
-        label="GitHub"
-        url="https://github.com/MikePfunk28"
-        iconSrc="/github.png"
-      />
-      <FloatingObject
-        position={[0, -5, -6]}
-        geometry="box"
-        color="#fff"
-        speed={0.8}
-        label="Flashcards"
-        url="https://flashcards.mikepfunk.com"
-        iconSrc="/mikepfunk_transparent_177x182-3.png"
-      />
-      <FloatingObject
-        position={[0, 2, -6]}
-        geometry="box"
-        color="#fff"
-        speed={0.6}
-        label="Mnemonic"
-        url="https://mnemonic.mikepfunk.com"
-        iconSrc="/mikepfunk_transparent_177x182-4.png"
-      />
+      <FloatingObject position={compress( [-7, 1, -9] )} geometry="box" color="#fff" speed={0.6} label="Quantum" url="https://mikepfunk28.github.io/Quantum-Drift-The-Lost-AWS-Architect/" iconSrc="/qd.png" />
+      <FloatingObject position={compress( [7, -5, -9] )} geometry="box" color="#fff" speed={0.8} label="Databot" url="https://mikepfunk.com/databot" iconSrc="/mikepfunk_transparent_177x182-2.png" />
+      <FloatingObject position={compress( [-7, -5, -9] )} geometry="box" color="#fff" speed={0.8} label="LinkedIn" url="https://www.linkedin.com/in/michaelpfundt/" iconSrc="/linkedin.gif" />
+      <FloatingObject position={compress( [7, 1, -9] )} geometry="box" color="#fff" speed={0.6} label="GitHub" url="https://github.com/MikePfunk28" iconSrc="/github.png" />
+      <FloatingObject position={compress( [0, -5, -9] )} geometry="box" color="#fff" speed={0.8} label="AI-Hub" url="https://ai-hub.mikepfunk.com" iconSrc="/mikepfunk_transparent_177x182-3.png" />
+      <FloatingObject position={compress( [0, 1, -9] )} geometry="box" color="#fff" speed={0.6} label="Mnemonic" url="https://mnemonic.mikepfunk.com" iconSrc="/mikepfunk_transparent_177x182-4.png" />
     </group>
   );
 };
@@ -259,19 +223,25 @@ interface Canvas3DProps {
   children?: React.ReactNode;
   cameraPosition?: [number, number, number];
   enableControls?: boolean;
+  showBackgroundScene?: boolean;
 }
 
-export const Canvas3D = ({
+export const Canvas3D = ( {
   children,
   cameraPosition = [0, -3, 3],
-  enableControls = true
-}: Canvas3DProps) => {
+  enableControls = true,
+  showBackgroundScene = true
+}: Canvas3DProps ) => {
+  const isNarrow = useIsMobile( 680 );
+  // Slightly pull camera back and widen FOV when narrow to avoid clipping without changing object size
+  type CameraConfig = { position: [number, number, number]; fov?: number };
+  const camera: CameraConfig = isNarrow
+    ? { position: [0, -3.4, 3.9], fov: 66 }
+    : { position: cameraPosition, fov: 60 };
+
   return (
     <div className="absolute inset-0 h-full w-full touch-none">
-      <Canvas
-        camera={{ position: cameraPosition }}
-        gl={{ antialias: true, alpha: true }}
-      >
+      <Canvas camera={camera} gl={{ antialias: true, alpha: true }}>
         <fog attach="fog" args={["#F0F8FF", 20, 30]} />
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.9} castShadow />
@@ -279,7 +249,7 @@ export const Canvas3D = ({
         <Suspense fallback={null}>
           <Environment preset="city" />
           {children}
-          <BackgroundScene />
+          {showBackgroundScene && <BackgroundScene />}
         </Suspense>
         {enableControls && <CameraControls />}
       </Canvas>
