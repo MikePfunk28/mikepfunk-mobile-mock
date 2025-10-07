@@ -33,7 +33,7 @@ export const Navigation = () => {
             <span className="font-black text-xl text-funk-blue text-glow-strong">MikePFunk</span>
           </div>          <div className="flex items-center space-x-2 responsive-icons">
             <a
-              href="https://github.com/mikepfunk"
+              href="https://github.com/mikepfunk28"
               target="_blank"
               rel="noopener noreferrer"
               title="Visit GitHub Profile"
