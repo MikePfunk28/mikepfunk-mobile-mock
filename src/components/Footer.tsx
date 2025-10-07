@@ -13,7 +13,7 @@ export const Footer = () => {
 
           <div className="flex items-center space-x-4">
             <a
-              href="https://github.com/mikepfunk"
+              href="https://github.com/MikePfunk28"
               target="_blank"
               rel="noopener noreferrer"
               className="text-funk-grey hover:text-funk-blue transition-colors"
@@ -22,7 +22,7 @@ export const Footer = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://flashcards.mikepfunk.com"
+              href="https://ai-hub.mikepfunk.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-funk-grey hover:text-funk-blue transition-colors"
