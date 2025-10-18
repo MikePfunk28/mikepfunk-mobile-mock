@@ -13,6 +13,8 @@ import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
 import Mnemonic from "./pages/Mnemonic";
 import Ai_Hub from "./pages/Ai_Hub";
+import Ai_Forge from "./pages/AI_Forge";
+import TOS from "./pages/TOS";
 
 const queryClient = new QueryClient();
 
@@ -29,8 +31,10 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/mnemonic" element={<Mnemonic />} />
           <Route path="/Ai_Hub" element={<Ai_Hub />} />
+          <Route path="/Ai_Forge" element={<Ai_Forge />} />
           <Route path="/databot" element={<Databot />} />
           <Route path="/games" element={<Games />} />
+          <Route path="/tos" element={<TOS />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

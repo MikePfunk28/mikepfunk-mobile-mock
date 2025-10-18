@@ -18,10 +18,11 @@ export const Navigation = () => {
     { name: "Projects", href: "/projects", icon: <Folder size={14} /> },
     { name: "Blog", href: "/blog", icon: <Book size={14} /> },
     { name: "Mnemonic", href: "/mnemonic", icon: <User size={14} /> },
-
+    { name: "AI-Forge", href: "/Ai_Forge", icon: <User size={14} /> },
     { name: "Ai_Hub", href: "/Ai_Hub", icon: <User size={14} /> },
     { name: "Databot", href: "/databot", icon: <User size={14} /> },
     { name: "Games", href: "/games", icon: <Smartphone size={14} /> },
+    { name: "TOS", href: "/tos", icon: <User size={14} /> },
   ];
 
   return (
