@@ -94,7 +94,7 @@ const TermsOfServicePage: React.FC = () => {
           <section>
             <h2 className="text-2xl font-semibold text-funk-blue mb-3">9. Contact Us</h2>
             <p className="text-funk-grey">
-              If you have any questions about these Terms, please contact us at: <a href="#" onClick={(e) => { e.preventDefault(); window.location.href = 'mailto:' + emailUser + '@' + emailDomain; }} className="text-funk-blue hover:underline cursor-pointer">{emailUser + '@' + emailDomain}</a>.
+              If you have any questions about these Terms, please contact us at: <a href={`mailto:${emailUser}@${emailDomain}`} className="text-funk-blue hover:underline cursor-pointer">{`${emailUser}@${emailDomain}`}</a>.
             </p>
           </section>
         </Card>
