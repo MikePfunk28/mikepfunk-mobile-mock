@@ -76,7 +76,7 @@
     "three": "^0.159.0",
     "vaul": "^1.1.2",
     "vite_react_shadcn_ts": "file:",
-    "zod": "^3.25.64"
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
