@@ -139,7 +139,7 @@ const PrivacyPolicyPage: React.FC = () => {
               If you have any questions about this Privacy Policy, You can contact us:
             </p>
             <ul className="list-disc list-inside ml-4 mt-2 space-y-2 text-funk-grey">
-              <li>By email: <a href="#" onClick={( e ) => { e.preventDefault(); window.location.href = 'mailto:' + 'support' + '@' + 'mikepfunk' + '.com'; }} className="text-funk-blue hover:underline cursor-pointer">{'info' + '@' + 'mikepfunk' + '.com'}</a></li>
+              <li>By email: <a href="#" onClick={( e ) => { e.preventDefault(); window.location.href = 'mailto:' + 'support' + '@' + 'mikepfunk' + '.com'; }} className="text-funk-blue hover:underline cursor-pointer">{'support' + '@' + 'mikepfunk' + '.com'}</a></li>
             </ul>
           </section>
         </Card>
