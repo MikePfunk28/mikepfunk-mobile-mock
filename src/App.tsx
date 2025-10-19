@@ -15,6 +15,7 @@ import Mnemonic from "./pages/Mnemonic";
 import Ai_Hub from "./pages/Ai_Hub";
 import Ai_Forge from "./pages/AI_Forge";
 import TOS from "./pages/TOS";
+import PrivacyPolicyPage from "./pages/Privacy";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/databot" element={<Databot />} />
           <Route path="/games" element={<Games />} />
           <Route path="/tos" element={<TOS />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
