@@ -247,7 +247,9 @@ export const Canvas3D = ( {
         <directionalLight position={[5, 5, 5]} intensity={0.9} castShadow />
         <spotLight position={[-5, 0, 5]} angle={0.15} penumbra={1} intensity={0.9} castShadow />
         <Suspense fallback={null}>
-          <Environment preset="city" />
+          <Environment files="/textures/potsdamer_platz_1k.hdr" />
+        </Suspense>
+        <Suspense fallback={null}>
           {children}
           {showBackgroundScene && <BackgroundScene />}
         </Suspense>

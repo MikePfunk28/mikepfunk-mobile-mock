@@ -12,7 +12,6 @@ const HomePage = () => {
   const [loaded, setLoaded] = useState( false );
 
   useEffect( () => {
-    // Simulate loading resources
     const timer = setTimeout( () => {
       setLoaded( true );
     }, 500 );
@@ -62,6 +61,7 @@ const HomeScene = ( { navigate }: { navigate: ( path: string ) => void } ) => {
       <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
         <Text
           position={[0, 1.5, -1]}
+          font="/fonts/Roboto-Regular.woff2"
           color="#33C3F0"
           fontSize={0.5}
           anchorX="center"
@@ -76,16 +76,20 @@ const HomeScene = ( { navigate }: { navigate: ( path: string ) => void } ) => {
         </Text>
       </Float>
 
-      <mesh position={[0, 0, -2]} onClick={() => navigate( '/projects' )}>
-        <sphereGeometry args={[0.7, 32, 32]} />
-        <meshStandardMaterial
-          color="#33C3F0"
-          metalness={0.5}
-          roughness={0.2}
-          emissive="#33C3F0"
-          emissiveIntensity={0.2}
-        />
-      </mesh>
+      <Float speed={1.1} rotationIntensity={0.12} floatIntensity={0.25}>
+        <mesh position={[0, 0, -2]} onClick={() => navigate( '/projects' )}>
+          <sphereGeometry args={[0.7, 32, 32]} />
+          <meshStandardMaterial
+            color="#33C3F0"
+            metalness={0.5}
+            roughness={0.2}
+            transparent
+            opacity={0.7}
+            emissive="#33C3F0"
+            emissiveIntensity={0.2}
+          />
+        </mesh>
+      </Float>
     </>
   );
 };

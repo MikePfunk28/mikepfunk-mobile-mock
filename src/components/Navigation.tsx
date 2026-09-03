@@ -10,7 +10,9 @@ interface NavigationItem {
 }
 
 export const Navigation = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isMenuHovered, setIsMenuHovered] = useState(false);
+  const [isMenuPinnedOpen, setIsMenuPinnedOpen] = useState(false);
+  const isMenuOpen = isMenuHovered || isMenuPinnedOpen;
 
   const navigation: NavigationItem[] = [
     { name: "Home", href: "/", icon: <Home size={14} /> },
@@ -50,29 +52,43 @@ export const Navigation = () => {
       </div>      {/* Hover Menu Section */}
       <div
         className="relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onPointerEnter={(event) => {
+          if (event.pointerType === "mouse") setIsMenuHovered(true);
+        }}
+        onPointerLeave={(event) => {
+          if (event.pointerType === "mouse") setIsMenuHovered(false);
+        }}
       >
         {/* Menu Indicator Bar */}
-        <div className="glass-morph mt-1 px-4 py-2 mx-2 rounded-md border border-funk-blue/20 cursor-pointer">
+        <button
+          type="button"
+          className="glass-morph mt-1 flex w-[calc(100%-1rem)] items-center justify-center px-4 py-2 mx-2 rounded-md border border-funk-blue/20"
+          aria-expanded={isMenuOpen}
+          aria-controls="site-navigation-menu"
+          onClick={() => setIsMenuPinnedOpen((isOpen) => !isOpen)}
+        >
           <div className="flex items-center justify-center space-x-2 text-funk-white responsive-icons">
             <Menu size={16} />
             <span className="text-sm">Menu</span>
             <ChevronDown
               size={16}
-              className={`transition-transform duration-200 ${isHovered ? 'rotate-180' : ''}`}
+              className={`transition-transform duration-200 ${isMenuOpen ? 'rotate-180' : ''}`}
             />
           </div>
-        </div>
+        </button>
 
         {/* Dropdown Menu */}
-        {isHovered && (
-          <div className="glass-morph mt-1 px-4 py-2 rounded-md mx-2 border border-funk-blue/20">
+        {isMenuOpen && (
+          <div id="site-navigation-menu" className="glass-morph no-scrollbar mt-1 max-h-[calc(100dvh-7.5rem)] overflow-y-auto overscroll-contain px-4 py-2 rounded-md mx-2 border border-funk-blue/20">
             <ul className="space-y-2">
               {navigation.map((item) => (
                 <li key={item.name}>
                   <Link
                     to={item.href}
+                    onClick={() => {
+                      setIsMenuHovered(false);
+                      setIsMenuPinnedOpen(false);
+                    }}
                     className="flex items-center space-x-2 p-2 rounded-md hover:bg-funk-blue/20 transition-colors text-funk-white responsive-icons"
                   >
                     {item.icon}

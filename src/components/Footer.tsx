@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Github, Smartphone, Book } from 'lucide-react';
+import { Github, Smartphone, Book, Linkedin } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -38,6 +38,15 @@ export const Footer = () => {
               aria-label="Games"
             >
               <Smartphone size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/michaelpfundt/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-funk-grey hover:text-funk-blue transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} />
             </a>
           </div>
         </div>
