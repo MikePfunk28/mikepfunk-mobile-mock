@@ -22,7 +22,6 @@
     "noFallthroughCasesInSwitch": false,
     "forceConsistentCasingInFileNames": true,
 
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
