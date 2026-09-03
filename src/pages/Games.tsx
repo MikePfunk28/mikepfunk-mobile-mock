@@ -19,6 +19,12 @@ const GamesPage = () => {
       title: "AWS Cloud Mystery",
       description: "Solve the mysteries of AWS cloud services in this interactive adventure game.",
       url: "https://mikepfunk28.github.io/Quantum-Drift-The-Lost-AWS-Architect/"
+    },
+    {
+      id: "imagine-engine",
+      title: "Imagine Engine",
+      description: "STILL IN PROGRESS!  Imagine Engine is Adventure Game where you can go in any direction and make your own story.  You can also create your classes, or play as a pre-built class, or even a mixture of classes.",
+      url: "https://imagine-engine.mikepfunk.com"
     }
   ];
 
