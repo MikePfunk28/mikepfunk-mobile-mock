@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useRef, useState, Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Text, useTexture } from "@react-three/drei";
+import { OrbitControls, Text, useTexture, Environment } from "@react-three/drei";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 
@@ -246,6 +246,9 @@ export const Canvas3D = ( {
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={0.9} castShadow />
         <spotLight position={[-5, 0, 5]} angle={0.15} penumbra={1} intensity={0.9} castShadow />
+        <Suspense fallback={null}>
+          <Environment files="/textures/potsdamer_platz_1k.hdr" />
+        </Suspense>
         <Suspense fallback={null}>
           {children}
           {showBackgroundScene && <BackgroundScene />}
