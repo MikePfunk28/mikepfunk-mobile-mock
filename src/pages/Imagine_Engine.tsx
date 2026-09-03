@@ -45,12 +45,11 @@ const Imagine_Engine = () => {
               to accomplish more challenging tasks.
             </p>
             <p className="text-funk-grey">
-              With AI-Forge, you can easily create and manage your
-              own prompts, curate and store knowledge bases for various
-              tasks. You can also save and categorize research papers
-              or articles for future reference. The app is designed to
-              I am actively developing this app, and adding new features
-              all the time.  Check back often for updates!
+              With AI-Forge, you can easily create and manage your own prompts,
+              curate and store knowledge bases for various tasks, and save and
+              categorize research papers or articles for future reference. I am
+              actively developing the app and adding new features all the time.
+              Check back often for updates!
             </p>
             <br />
             <a href="https://ai-forge.mikepfunk.com" target="_blank" rel="noopener noreferrer" className="flex text-left mb-2">

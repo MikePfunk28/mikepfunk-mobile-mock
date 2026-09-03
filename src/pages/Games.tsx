@@ -23,7 +23,7 @@ const GamesPage = () => {
     {
       id: "imagine-engine",
       title: "Imagine Engine",
-      description: "STILL IN PROGRESS!  Imagine Engine is Adventure Game where you can go in any direction and make your own story.  You can also create your classes, or play as a pre-built class, or even a mixture of classes.",
+      description: "Still in progress. Imagine Engine is an adventure game where you can go in any direction and make your own story. You can create your own classes, play as a pre-built class, or mix and match.",
       url: "https://imagine-engine.mikepfunk.com"
     }
   ];

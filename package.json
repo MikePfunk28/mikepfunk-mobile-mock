@@ -95,7 +95,7 @@
     "vite": "^7.3.6"
   },
   "allowScripts": {
-    "@swc/core@1.15.43": true,
-    "esbuild@0.28.1": true
+    "@swc/core@1.16.1": true,
+    "esbuild@0.28.2": true
   }
 }

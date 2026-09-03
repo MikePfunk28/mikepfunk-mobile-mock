@@ -10,7 +10,9 @@ interface NavigationItem {
 }
 
 export const Navigation = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuHovered, setIsMenuHovered] = useState(false);
+  const [isMenuPinnedOpen, setIsMenuPinnedOpen] = useState(false);
+  const isMenuOpen = isMenuHovered || isMenuPinnedOpen;
 
   const navigation: NavigationItem[] = [
     { name: "Home", href: "/", icon: <Home size={14} /> },
@@ -50,8 +52,12 @@ export const Navigation = () => {
       </div>      {/* Hover Menu Section */}
       <div
         className="relative"
-        onMouseEnter={() => setIsMenuOpen(true)}
-        onMouseLeave={() => setIsMenuOpen(false)}
+        onPointerEnter={(event) => {
+          if (event.pointerType === "mouse") setIsMenuHovered(true);
+        }}
+        onPointerLeave={(event) => {
+          if (event.pointerType === "mouse") setIsMenuHovered(false);
+        }}
       >
         {/* Menu Indicator Bar */}
         <button
@@ -59,7 +65,7 @@ export const Navigation = () => {
           className="glass-morph mt-1 flex w-[calc(100%-1rem)] items-center justify-center px-4 py-2 mx-2 rounded-md border border-funk-blue/20"
           aria-expanded={isMenuOpen}
           aria-controls="site-navigation-menu"
-          onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          onClick={() => setIsMenuPinnedOpen((isOpen) => !isOpen)}
         >
           <div className="flex items-center justify-center space-x-2 text-funk-white responsive-icons">
             <Menu size={16} />
@@ -79,7 +85,10 @@ export const Navigation = () => {
                 <li key={item.name}>
                   <Link
                     to={item.href}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => {
+                      setIsMenuHovered(false);
+                      setIsMenuPinnedOpen(false);
+                    }}
                     className="flex items-center space-x-2 p-2 rounded-md hover:bg-funk-blue/20 transition-colors text-funk-white responsive-icons"
                   >
                     {item.icon}
