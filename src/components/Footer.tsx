@@ -40,7 +40,7 @@ export const Footer = () => {
               <Smartphone size={20} />
             </a>
             <a
-              href="https://www.linkedin.com/in/MichaelPfundt"
+              href="https://www.linkedin.com/in/michaelpfundt/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-funk-grey hover:text-funk-blue transition-colors"

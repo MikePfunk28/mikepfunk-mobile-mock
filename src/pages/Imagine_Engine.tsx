@@ -25,7 +25,7 @@ const Imagine_Engine = () => {
                 strokeWidth={0.02}
                 strokeColor="#66E3FF"
               >
-                Ai-Hub
+                Imagine Engine
               </Text>
             </Float>
           </Canvas3D>
@@ -33,28 +33,20 @@ const Imagine_Engine = () => {
 
         <div className="container mx-auto px-4 py-8">
           <Card className="glass-morph p-6 mb-8">
-            <h1 className="text-3xl font-bold mb-4 text-funk-blue text-glow text-center">AI-Hub</h1>
+            <h1 className="text-3xl font-bold mb-4 text-funk-blue text-glow text-center">Imagine Engine</h1>
             <p className="text-funk-grey mb-4">
-              AI-Forge is an agent builder you can use to customize your
-              own AI Agents.  Build agents that can perform specific tasks,
-              connect to various APIs, and even communicate with other agents.
-              The possibilities are endless!  We built an agent decorator that
-              enables you to setup queries, or install packages before running
-              the agent builder, or setup post process Observability.  The agent
-              decorator makes it easy for your agents to then create other agents,
-              to accomplish more challenging tasks.
+              Imagine Engine is an open-ended adventure game where you can go in
+              any direction and make your own story. Create your own classes,
+              play as a pre-built class, or mix and match to shape your adventure.
             </p>
             <p className="text-funk-grey">
-              With AI-Forge, you can easily create and manage your own prompts,
-              curate and store knowledge bases for various tasks, and save and
-              categorize research papers or articles for future reference. I am
-              actively developing the app and adding new features all the time.
-              Check back often for updates!
+              Imagine Engine is still in progress. New content and choices are
+              being added as development continues.
             </p>
             <br />
-            <a href="https://ai-forge.mikepfunk.com" target="_blank" rel="noopener noreferrer" className="flex text-left mb-2">
+            <a href="https://imagine-engine.mikepfunk.com" target="_blank" rel="noopener noreferrer" className="flex text-left mb-2">
 
-              <span className="ml-2 font-bold mb-4 text-fuchsia-500 hover:text-fuchsia-500/80">Check Out AI-Forge</span>
+              <span className="ml-2 font-bold mb-4 text-fuchsia-500 hover:text-fuchsia-500/80">Open Imagine Engine</span>
 
             </a>
           </Card>
@@ -66,40 +58,38 @@ const Imagine_Engine = () => {
             <h2 className="text-xl font-bold mb-4 text-funk-blue">Features</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-medium text-funk-white">Prompt Engineering</h3>
-                <p className="text-sm text-funk-grey">Create and keep track of the different prompt, and their effectiveness.</p>
+                <h3 className="font-medium text-funk-white">Open-Ended Stories</h3>
+                <p className="text-sm text-funk-grey">Choose your direction and create a story through your decisions.</p>
               </div>
               <div>
-                <h3 className="font-medium text-funk-white">Knowledge Bases</h3>
-                <p className="text-sm text-funk-grey">Track knowledge bases for projects from one area.</p>
+                <h3 className="font-medium text-funk-white">Custom Classes</h3>
+                <p className="text-sm text-funk-grey">Create a class that fits the character you want to play.</p>
               </div>
               <div>
-                <h3 className="font-medium text-funk-white">Research and Articles</h3>
-                <p className="text-sm text-funk-grey">Easily save and categorize research papers or articles for future reference.</p>
+                <h3 className="font-medium text-funk-white">Flexible Builds</h3>
+                <p className="text-sm text-funk-grey">Start with a pre-built class or combine classes to make your own build.</p>
               </div>
             </div>
 
           </Card>
           <Card className="glass-morph p-6">
-            <h2 className="text-xl font-bold mb-4 text-funk-blue">Future Features</h2>
+            <h2 className="text-xl font-bold mb-4 text-funk-blue">In Development</h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-medium text-funk-white">Workflow Builder</h3>
-                <p className="text-sm text-funk-grey">Chain prompts, build out workflows with ease.</p>
+                <h3 className="font-medium text-funk-white">More Adventures</h3>
+                <p className="text-sm text-funk-grey">New places, choices, and stories are planned for future updates.</p>
               </div>
               <div>
-                <h3 className="font-medium text-funk-white">Customize and create Agents</h3>
-                <p className="text-sm text-funk-grey">The model is designed to help you create and manage your own agents.</p>
+                <h3 className="font-medium text-funk-white">More Class Options</h3>
+                <p className="text-sm text-funk-grey">Additional ways to customize characters are in progress.</p>
               </div>
               <div>
-                <h3 className="font-medium text-funk-white">MCP/A2A</h3>
-                <p className="text-sm text-funk-grey">Use MCP and A2A protocols for communication and tool calling.
-                  Build your own agents and turn them into powerful MCP servers.</p>
+                <h3 className="font-medium text-funk-white">Expanded Choices</h3>
+                <p className="text-sm text-funk-grey">More paths and outcomes will deepen each adventure.</p>
               </div>
               <div>
-                <h3 className="font-medium text-funk-white">Turn Research into Agents</h3>
-                <p className="text-sm text-funk-grey">Take the research paper, and use that to create that workflow, creating
-                  agents on the fly.</p>
+                <h3 className="font-medium text-funk-white">Ongoing Updates</h3>
+                <p className="text-sm text-funk-grey">The game will continue to grow as new ideas are built.</p>
               </div>
             </div>
           </Card>
