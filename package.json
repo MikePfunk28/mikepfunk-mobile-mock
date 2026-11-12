@@ -66,7 +66,7 @@
     "react-hook-form": "^7.53.0",
     "react-pdf": "^10.2.0",
     "react-resizable-panels": "^3.0.6",
-    "react-router-dom": "^6.30.4",
+    "react-router-dom": "^7.18.5",
     "recharts": "^3.9.1",
     "sonner": "^1.5.0",
     "tailwind-merge": "^3.3.1",
@@ -97,5 +97,13 @@
   "allowScripts": {
     "@swc/core@1.16.1": true,
     "esbuild@0.28.2": true
+  },
+  "overrides": {
+    "@tailwindcss/typography": {
+      "postcss-selector-parser": "^6.1.6"
+    },
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    }
   }
 }
